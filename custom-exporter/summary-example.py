@@ -1,0 +1,25 @@
+from prometheus_client import Summary, start_http_server
+import time
+import random
+
+# Create a summary metric
+request_duration_summary = Summary('request_duration_summary_seconds', 'Duration of requests in seconds')
+
+# Simulate a function that processes requests
+def process_request():
+    start_time = time.time()
+
+    # Simulate some processing
+    time.sleep(random.uniform(0.1, 0.5))  # Simulate variable processing time
+
+    # Record the duration in the summary
+    request_duration_summary.observe(time.time() - start_time)
+
+# Expose metrics
+if __name__ == '__main__':
+    # Start the Prometheus HTTP server on port 8000
+    start_http_server(8000)
+
+    # Simulate requests and update metrics
+    while True:
+        process_request()
