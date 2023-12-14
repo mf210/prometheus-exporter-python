@@ -22,7 +22,16 @@ services:
     volumes:
       - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
       - grafana:/var/lib/grafana
-
+    
+  custom-exporter:
+    container_name: custom-exporter
+    build: ./custom-exporter
+    command: python histogram-example.py
+    ports:
+      - 8000:8000
+    volumes:
+      - ./custom-exporter:/custom-exporter
+    
   # nginx:
   #   image: nginx
   #   ports:
@@ -49,4 +58,4 @@ services:
 
 volumes:
   grafana:
-  nginx-test-access-log:
+  # nginx-test-access-log:
