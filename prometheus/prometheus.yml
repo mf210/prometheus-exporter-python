@@ -8,6 +8,6 @@ alerting:
 rule_files:
 
 scrape_configs:
-- job_name: prometheus-custom-exporter
+- job_name: custom-exporter
   static_configs:
-  - targets: ["prometheus-custom-exporter:9150"]
+  - targets: ["custom-exporter:8000"]
