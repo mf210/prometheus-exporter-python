@@ -4,3 +4,4 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 COPY . /prometheus-exporter/
 RUN pip install pipenv && pipenv install --dev --system
+CMD [ "python", "quick-start.py" ]
